@@ -1,5 +1,8 @@
 ### Here I try to make a collection of all typescript basic to advance with some example
     this is only for self learing nothing else
+
+
+## Webpack setup     
 -------------------------------------
 | 1. project init                   |
 |   ==> all initiation              |
@@ -67,7 +70,7 @@ In this project I try to use webpack for bundleing this `.ts` files
     then inside the `package.json` file insert another scripts
     ```
     "scripts":{
-     "server":"webpack-dev-server"
+      "serve": "webpack serve"
     }
 
     now run the serve comman what `npm run serve`
@@ -81,3 +84,50 @@ In this project I try to use webpack for bundleing this `.ts` files
    ```
 
    by doing this webpack dev server know where to serve the code in memory from 
+
+-------------------------------------------------------
+| 3. How to bundle up seperate modules at a time      |
+|   ==> Using ES6 Modules                             |
+|   ==> live reload                                   |
+------------------------------------------------------- 
+
+  a. for enable this webpack to render or bundle typescript modules files `import / export ` inside webpack.config.ts add new object
+
+    ```
+    resolve:{
+      extensions:['.ts','.js']
+    } 
+    ```
+-------------------------------------------------------
+| 4. For easy debug purpose add source-map            |
+|   ==> eval-source-map                               |
+|   ==> source-map                                    |
+------------------------------------------------------- 
+
+  As `bundle.js` is totally unreadable after build by the webpack package it is difficult to debug the code. for rid of this problem add `devtool: "eval-source-map",` in module.export ( webpack.config.js )
+    ```
+    module.exports = {
+      devtool: "eval-source-map",
+    }
+    ```
+
+-------------------------------------------------------
+| 4. Mode Production / devemopmet                     |
+|   ==> mode:'development'                            |
+|   ==> mode:'development'                             |
+------------------------------------------------------- 
+    ```
+    module.exports = {
+      mode:'development' or mode:'development'
+    }
+    ```
+
+
+
+    --------------------------------
+    |  ref links:                  |
+    --------------------------------
+    1. https://stackoverflow.com/questions/40379139/cannot-find-module-webpack-bin-config-yargs
+
+    2. Webpack - devtool source-map VS eval-source-map
+    visit: https://stackoverflow.com/questions/51266222/webpack-devtool-source-map-vs-eval-source-map
