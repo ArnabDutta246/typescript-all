@@ -1,0 +1,83 @@
+### Here I try to make a collection of all typescript basic to advance with some example
+    this is only for self learing nothing else
+-------------------------------------
+| 1. project init                   |
+|   ==> all initiation              |
+|   ==> webpack config file         |
+-------------------------------------
+In this project I try to use webpack for bundleing this `.ts` files
+
+  a. initiate .ts config file by run command
+    ``` 
+    tsc --init
+    ```
+  b. init package.json
+    ```
+    npm init
+    ```
+  c. install typescript and webpack  
+    ```
+    npm install webpack webpack-cli ts-loader typescript -D
+    ```
+  d. ** initiate `webpack.config.js` file 
+
+      ```
+      const path = require("path");
+
+      module.exports = {
+        entry: "./src/index.ts",
+        module: {
+          rules: [
+            {
+              test: /\.ts$/,
+              use: "ts-loader",
+              include: [path.resolve(__dirname, "src")],
+            },
+          ],
+        },
+        output: {
+          filename: "bundle.js",
+          path: path.resolve(__dirname, "public"),
+        },
+      };
+
+      ```
+
+      inside `package.json` file 
+      ```
+      "scripts": {
+        "build": "webpack",
+      },
+      ```
+  e. run this after writing and ts code inside index.ts
+    ```
+    npm run build
+    ```    
+-------------------------------------
+| 2. webpack dev server setup       |
+|   ==> open in browser             |
+|   ==> live reload                 |
+-------------------------------------  
+
+  a. For live servering running during the development have to install `webpack-dev-server` package
+
+    ```
+    npm install webpack-dev-server -D 
+    ```
+    then inside the `package.json` file insert another scripts
+    ```
+    "scripts":{
+     "server":"webpack-dev-server"
+    }
+
+    now run the serve comman what `npm run serve`
+
+   b. for re-building in every changes and also running webpack-serve-dev inside webpack.config.js file in output object have to add new property 
+   
+   ```
+   output:{
+   publicPath:'public'
+   }
+   ```
+
+   by doing this webpack dev server know where to serve the code in memory from 
